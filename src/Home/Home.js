@@ -14,7 +14,7 @@ const HomePage = (props) => {
   const [showModal, setShowModal] = useState(0);
   const [textFile, setTextFile] = useState(0);
   const [text, setText] = useState(0);
-  const alert = useAlert()
+  const alert = useAlert();
 
   const onDrop = useCallback((acceptedFiles) => {
     if (acceptedFiles) {
@@ -26,7 +26,11 @@ const HomePage = (props) => {
     if (text) {
       setShowModal(true);
       axios
-        .post("https://idpa-t04-backend.herokuapp.com/api/textRawUpload", { content: text })
+        .post(
+          "https://idpa-t04-backend.herokuapp.com/api/textRawUpload",
+          { content: text },
+          { headers: { "Access-Control-Allow-Origin": "*" } }
+        )
         .then(async (res) => {
           setShowModal(false);
           await props.setResults(res.data);
@@ -37,7 +41,10 @@ const HomePage = (props) => {
       var formData = new FormData();
       formData.append("file", textFile);
       axios
-        .post("https://idpa-t04-backend.herokuapp.com/api/textFileUpload", formData)
+        .post(
+          "https://idpa-t04-backend.herokuapp.com/api/textFileUpload",
+          formData
+        )
         .then(async (res) => {
           setShowModal(false);
           props.setResults(res.data);
