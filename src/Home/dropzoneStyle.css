@@ -1,0 +1,7 @@
+.dropzone-border {
+  border-style: dashed !important;
+}
+
+.grabbing {
+  cursor: grabbing!important;
+}
