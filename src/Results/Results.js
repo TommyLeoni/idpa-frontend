@@ -13,10 +13,10 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(1),
   },
   fab: {
-    margin: theme.spacing.unit, // You might not need this now
+    margin: theme.spacing(1),
     position: "fixed",
-    bottom: theme.spacing.unit * 2,
-    right: theme.spacing.unit * 3,
+    bottom: theme.spacing(2),
+    right: theme.spacing(3),
   },
 }));
 
@@ -33,7 +33,7 @@ function ResultsPage(props) {
     />
   ));
 
-  return (
+  return props.results ? (
     <div className="container" id="container">
       <div className="row justify-content-center text-center h-100 m-0 p-0">
         <div
@@ -65,6 +65,12 @@ function ResultsPage(props) {
 
           </div>
         </div>
+      </div>
+    </div>
+  ) : (
+    <div className="container" id="container">
+      <div className="row justify-content-center text-center h-100 m-0 p-0">
+          <h1 className="font-weight-bold my-5 display-4">Keine Resultate gefunden</h1>
       </div>
     </div>
   );

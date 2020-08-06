@@ -11,7 +11,7 @@ import "./home.css";
 import { withAlert, useAlert } from "react-alert";
 
 const HomePage = (props) => {
-  const [showModal, setShowModal] = useState(0);
+  const [showModal, setShowModal] = useState(false);
   const [textFile, setTextFile] = useState(0);
   const [text, setText] = useState(0);
   const alert = useAlert();
@@ -27,7 +27,7 @@ const HomePage = (props) => {
       setShowModal(true);
       axios
         .post(
-          "https://idpa-t04-backend.herokuapp.com/api/textRawUpload",
+          "http://127.0.0.1:5000/api/textRawUpload", //"https://idpa-t04-backend.herokuapp.com/api/textRawUpload",
           { content: text },
           { headers: { "Access-Control-Allow-Origin": "*" } }
         )
@@ -42,7 +42,7 @@ const HomePage = (props) => {
       formData.append("file", textFile);
       axios
         .post(
-          "https://idpa-t04-backend.herokuapp.com/api/textFileUpload",
+          "http://127.0.0.1:5000/api/textFileUpload", //"https://idpa-t04-backend.herokuapp.com/api/textFileUpload",
           formData
         )
         .then(async (res) => {

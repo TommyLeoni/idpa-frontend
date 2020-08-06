@@ -14,7 +14,7 @@ const alertOptions = {
 };
 
 const AlertProviderRoot = () => (
-  <AlertProvider template={AlertTemplate} {...alertOptions}>
+  <AlertProvider template={AlertTemplate} {...alertOptions} >
     <Root />
   </AlertProvider>
 );

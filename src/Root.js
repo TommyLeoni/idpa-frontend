@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import HomePage from "./Home/Home";
 import ResultsPage from "./Results/Results";
+import ResultsNewTest from "./Results_new/Results_new";
 
 class Root extends Component {
   constructor(props) {
@@ -14,7 +15,7 @@ class Root extends Component {
   setResults = (results) => {
     this.setState({
       results: results[0],
-      orgContent: results[1]
+      orgContent: results[1],
     });
   };
 
@@ -30,8 +31,14 @@ class Root extends Component {
             />
             <Route
               path="/results"
-              render={() => <ResultsPage results={this.state.results} orgContent={this.state.orgContent}/>}
+              render={() => (
+                <ResultsPage
+                  results={this.state.results}
+                  orgContent={this.state.orgContent}
+                />
+              )}
             />
+            <Route path="/test/results_new" render={() => <ResultsNewTest />} />
           </Switch>
         </div>
       </Router>
