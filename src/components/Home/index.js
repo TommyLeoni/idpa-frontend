@@ -175,7 +175,7 @@ const HomePage = (props) => {
           >
             <InfoOutlinedIcon className={classes.infoIcon} />
           </HtmlTooltip>
-          <LoadingModal show={showModal} />
+          <LoadingModal show={showModal} t={t} />
         </div>
       </div>
     </div>

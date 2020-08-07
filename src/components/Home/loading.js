@@ -5,12 +5,14 @@ import ModalHeader from "react-bootstrap/ModalHeader";
 import ModalTitle from "react-bootstrap/ModalTitle";
 
 export default function LoadingModal(props) {
+  const { t } = props;
+
   return (
     <Modal {...props} aria-labelledby="contained-modal-title-vcenter" centered>
       <ModalHeader>
-        <ModalTitle>Analyse läuft ..</ModalTitle>
+        <ModalTitle>{t("loading.title")}</ModalTitle>
       </ModalHeader>
-      <ModalBody>Bitte einen Moment warten</ModalBody>
+      <ModalBody>{t("loading.body")}</ModalBody>
     </Modal>
   );
 }

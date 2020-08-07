@@ -27,7 +27,7 @@ export default function ResultsNewTest(props) {
         <h1 className="font-weight-bold my-5 display-4">
           {t("results.title")}
         </h1>
-        <div className="col-12 col-md-10 overflow-auto">{resultView}</div>
+        <div className="col-12 col-md-10 overflow-auto px-5">{resultView}</div>
       </div>
     </div>
   );
