@@ -1,15 +1,26 @@
 {
-    "translations": {
-      "title": "AGB Analyse",
-      "author": "von Tomaso Leoni",
-      "tooltips": {
-        "mainTextField": "Geben Sie hier die AGBs ein oder kopieren Sie sie hierher",
-        "dropzone": "Ziehen Sie Ihre Datei hierher",
-        "submitButton": "Absenden",
-        "langSwitcher": "Sprache",
-        "langSwitcherInfoTitle": "Sprache",
-        "langSwichterInfo": "Diese Sprache beinflusst nur die Benutzeroberfläche. Die Sprache Ihres Dokumentes wird automatisch erkannt."
-      }
+  "translations": {
+    "title": "AGB Analyse",
+    "author": "von Tomaso Leoni",
+    "tooltips": {
+      "mainTextField": "Geben Sie hier die AGBs ein oder kopieren Sie sie hierher",
+      "dropzone": "Ziehen Sie Ihre Datei hierher",
+      "dropping": "Hierher ziehen ...",
+      "submitButton": "Absenden",
+      "langSwitcher": "Sprache",
+      "langSwitcherInfoTitle": "Sprache",
+      "langSwitcherInfo": "Diese Einstellung beinflusst nur die Benutzeroberfläche. Die Sprache Ihres Dokumentes wird automatisch erkannt."
+    },
+    "results": {
+      "title": "Ihre Resultate"
+    },
+    "loading": {
+      "title": "Analyse läuft ..",
+      "body": "Bitte einen Moment warten"
+    },
+    "alert": {
+      "error": "Bitte versichern Sie sich den Text in einer der beiden Form angegeben zu haben und versuchen Sie gerne erneut",
+      "title": "Es ist weder Text noch eine Text-Datei vorhanden"
     }
   }
-  
+}

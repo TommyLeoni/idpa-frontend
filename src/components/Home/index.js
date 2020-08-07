@@ -91,12 +91,9 @@ const HomePage = (props) => {
           props.history.push("/results");
         });
     } else {
-      alert.error(
-        "Bitte versichern Sie sich den Text in einer der beiden Form angegeben zu haben und versuchen Sie gerne erneut.",
-        {
-          title: "Es ist weder Text noch eine Text-Datei vorhanden",
-        }
-      );
+      alert.error(t("alert.error"), {
+        title: t("alert.title"),
+      });
     }
   };
 
@@ -106,13 +103,13 @@ const HomePage = (props) => {
         <div className="col-10 my-auto">
           <h1 className="mb-0 mt-n3 font-weight-bold">{t("title")}</h1>
           <small className="text-muted">
-            <em>by Tomaso Leoni</em>
+            <em>{t("author")}</em>
           </small>
         </div>
         <div className="col-10 col-lg-6 my-auto">
           <TextField
             id="outlined-basic"
-            helperText="Geben Sie hier die AGBs ein oder kopieren Sie sie hierher"
+            helperText={t("tooltips.mainTextField")}
             multiline
             rows={10}
             variant="outlined"
@@ -128,14 +125,16 @@ const HomePage = (props) => {
                 <input {...getInputProps()} />
                 <AddIcon color="disabled" fontSize="large" />
                 {isDragActive ? (
-                  <p className="text-secondary my-auto">Hierher ziehen ...</p>
+                  <p className="text-secondary my-auto">
+                    {t("tooltips.dropping")}
+                  </p>
                 ) : textFile ? (
                   <p className="text-secondary my-auto overflow-hidden">
                     {textFile.name}
                   </p>
                 ) : (
                   <p className="text-secondary my-auto">
-                    Ziehen Sie Ihre Datei hierher
+                    {t("tooltips.dropzone")}
                   </p>
                 )}
               </div>
@@ -144,7 +143,7 @@ const HomePage = (props) => {
         </div>
         <div className="col-12">
           <Button variant="contained" color="secondary" onClick={handleSubmit}>
-            absenden
+            {t("tooltips.submitButton")}
           </Button>
           <br />
           <FormControl className={classes.formControl}>
@@ -161,14 +160,15 @@ const HomePage = (props) => {
                 English
               </MenuItem>
             </Select>
-            <FormHelperText>Language</FormHelperText>
+            <FormHelperText>{t("tooltips.langSwitcher")}</FormHelperText>
           </FormControl>
           <HtmlTooltip
             title={
               <React.Fragment>
-                <Typography color="inherit">Language</Typography>
-                This setting <u>only affects the UI.</u> Your document's
-                language will be <u>detected automatically</u>.
+                <Typography color="inherit">
+                  {t("tooltips.langSwitcherInfoTitle")}
+                </Typography>
+                {t("tooltips.langSwitcherInfo")}
               </React.Fragment>
             }
             placement="right"

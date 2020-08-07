@@ -3,12 +3,24 @@
     "title": "T&C Analysis",
     "author": "by Tomaso Leoni",
     "tooltips": {
-      "mainTextField": "Please write or copy your T&C text in here",
+      "mainTextField": "Please write or copy your T&Cs in here",
       "dropzone": "Drop your file here",
+      "dropping": "Drop it here ...",
       "submitButton": "Submit",
       "langSwitcher": "Language",
       "langSwitcherInfoTitle": "Language",
-      "langSwichterInfo": "This setting only affects the UI. Your document's language will be detected automatically."
+      "langSwitcherInfo": "This setting only affects the UI. Your document's language will be detected automatically."
+    },
+    "results": {
+        "title": "Your results"
+    },
+    "loading": {
+      "title": "Analyzing ..",
+      "body": "Please wait a moment"
+    },
+    "alert": {
+      "error": "Please make sure text is present in one of the two ways possible and try again",
+      "title": "No text or file is available"
     }
   }
 }
