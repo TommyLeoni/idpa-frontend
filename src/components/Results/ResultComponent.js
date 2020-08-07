@@ -25,7 +25,7 @@ export default function ResultComponent(danger, sentences, key) {
   return (
     <div key={key}>
       {sentences.length > 0 ? (
-        <div className="row p-2">
+        <div className="row">
           <div className="w-100 text-center text-muted">
             <u onClick={() => toggleView(!viewRest)}>
               {viewRest ? "Hide context" : "Show context"}
