@@ -1,5 +1,7 @@
+import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined";
 import React, { useCallback, useState } from "react";
 import TextField from "@material-ui/core/TextField";
+import { withAlert, useAlert } from "react-alert";
 import { withRouter } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import AddIcon from "@material-ui/icons/Add";
@@ -8,12 +10,50 @@ import LoadingModal from "./loading";
 import "bootstrap/js/dist/modal";
 import axios from "axios";
 import "./home.css";
-import { withAlert, useAlert } from "react-alert";
+import {
+  makeStyles,
+  Select,
+  MenuItem,
+  FormHelperText,
+  FormControl,
+  Tooltip,
+  withStyles,
+  Typography,
+} from "@material-ui/core";
+import { Popup } from "semantic-ui-react";
+
+const useStyles = makeStyles((theme) => ({
+  formControl: {
+    margin: theme.spacing(1),
+    marginLeft: theme.spacing(5),
+    minWidth: 110,
+  },
+  selectEmpty: {
+    marginTop: theme.spacing(2),
+    textAlign: "left",
+  },
+  infoIcon: {
+    marginTop: theme.spacing(4),
+    marginLeft: theme.spacing(1),
+  },
+}));
+
+const HtmlTooltip = withStyles((theme) => ({
+  tooltip: {
+    backgroundColor: "#ffffff",
+    color: "rgba(0, 0, 0, 0.87)",
+    maxWidth: 220,
+    fontSize: theme.typography.pxToRem(12),
+    border: "1px solid #dadde9",
+  },
+}))(Tooltip);
 
 const HomePage = (props) => {
+  const [language, setLanguage] = useState({ text: "German", lang: "de" });
   const [showModal, setShowModal] = useState(false);
   const [textFile, setTextFile] = useState(0);
   const [text, setText] = useState(0);
+  const classes = useStyles();
   const alert = useAlert();
 
   const onDrop = useCallback((acceptedFiles) => {
@@ -69,10 +109,10 @@ const HomePage = (props) => {
             <em>by Tomaso Leoni</em>
           </small>
         </div>
-        <div className="col-6 my-auto">
+        <div className="col-10 col-lg-6 my-auto">
           <TextField
             id="outlined-basic"
-            label="Geben Sie hier die AGBs ein oder kopieren Sie sie hierher"
+            helperText="Geben Sie hier die AGBs ein oder kopieren Sie sie hierher"
             multiline
             rows={10}
             variant="outlined"
@@ -106,6 +146,39 @@ const HomePage = (props) => {
           <Button variant="contained" color="secondary" onClick={handleSubmit}>
             absenden
           </Button>
+          <br />
+          <FormControl className={classes.formControl}>
+            <Select
+              value={language.text}
+              onChange={(event) =>
+                setLanguage({
+                  text: event.target.text,
+                  lang: event.target.lang,
+                })
+              }
+              displayEmpty
+              className={classes.selectEmpty}
+              inputProps={{ "aria-label": "Without label" }}
+            >
+              <MenuItem value="German">German</MenuItem>
+              <MenuItem text="English" lang="en">
+                English
+              </MenuItem>
+            </Select>
+            <FormHelperText>Language</FormHelperText>
+          </FormControl>
+          <HtmlTooltip
+            title={
+              <React.Fragment>
+                <Typography color="inherit">Language</Typography>
+                This setting <u>only affects the UI.</u> Your document's
+                language will be <u>detected automatically</u>.
+              </React.Fragment>
+            }
+            placement="right"
+          >
+            <InfoOutlinedIcon className={classes.infoIcon} />
+          </HtmlTooltip>
           <LoadingModal show={showModal} />
         </div>
       </div>
