@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import HomePage from "./Home/Home";
-import ResultsPage from "./Results/Results";
-import ResultsNewTest from "./Results_new/Results_new";
+import HomePage from "./components/Home/";
+import ResultsPage from "./components/Results/";
 
 class Root extends Component {
   constructor(props) {
@@ -14,7 +13,7 @@ class Root extends Component {
 
   setResults = (results) => {
     this.setState({
-      results: results
+      results: results,
     });
   };
 
@@ -29,15 +28,9 @@ class Root extends Component {
               render={() => <HomePage setResults={this.setResults} />}
             />
             <Route
-              path="/resultssss"
-              render={() => (
-                <ResultsPage
-                  results={this.state.results}
-                  orgContent={this.state.orgContent}
-                />
-              )}
+              path="/results"
+              render={() => <ResultsPage results={this.state.results} />}
             />
-            <Route path="/results" render={() => <ResultsNewTest results={this.state.results} />} />
           </Switch>
         </div>
       </Router>

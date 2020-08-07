@@ -1,0 +1,14 @@
+{
+  "translations": {
+    "title": "T&C Analysis",
+    "author": "by Tomaso Leoni",
+    "tooltips": {
+      "mainTextField": "Please write or copy your T&C text in here",
+      "dropzone": "Drop your file here",
+      "submitButton": "Submit",
+      "langSwitcher": "Language",
+      "langSwitcherInfoTitle": "Language",
+      "langSwichterInfo": "This setting only affects the UI. Your document's language will be detected automatically."
+    }
+  }
+}

@@ -1,3 +1,4 @@
+import { withTranslation, useTranslation } from "react-i18next";
 import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined";
 import React, { useCallback, useState } from "react";
 import TextField from "@material-ui/core/TextField";
@@ -20,7 +21,6 @@ import {
   withStyles,
   Typography,
 } from "@material-ui/core";
-import { Popup } from "semantic-ui-react";
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -49,7 +49,7 @@ const HtmlTooltip = withStyles((theme) => ({
 }))(Tooltip);
 
 const HomePage = (props) => {
-  const [language, setLanguage] = useState({ text: "German", lang: "de" });
+  const { t, i18n } = useTranslation();
   const [showModal, setShowModal] = useState(false);
   const [textFile, setTextFile] = useState(0);
   const [text, setText] = useState(0);
@@ -104,7 +104,7 @@ const HomePage = (props) => {
     <div className="container" id="container">
       <div className="row justify-content-center text-center h-100 m-0 p-0">
         <div className="col-10 my-auto">
-          <h1 className="mb-0 mt-n3 font-weight-bold">AGB Analyzer</h1>
+          <h1 className="mb-0 mt-n3 font-weight-bold">{t("title")}</h1>
           <small className="text-muted">
             <em>by Tomaso Leoni</em>
           </small>
@@ -149,19 +149,15 @@ const HomePage = (props) => {
           <br />
           <FormControl className={classes.formControl}>
             <Select
-              value={language.text}
-              onChange={(event) =>
-                setLanguage({
-                  text: event.target.text,
-                  lang: event.target.lang,
-                })
-              }
-              displayEmpty
+              value={i18n.language}
+              onChange={(event) => i18n.changeLanguage(event.target.value)}
               className={classes.selectEmpty}
               inputProps={{ "aria-label": "Without label" }}
             >
-              <MenuItem value="German">German</MenuItem>
-              <MenuItem text="English" lang="en">
+              <MenuItem name="Deutsch" value="de">
+                Deutsch
+              </MenuItem>
+              <MenuItem name="English" value="en">
                 English
               </MenuItem>
             </Select>
@@ -186,4 +182,4 @@ const HomePage = (props) => {
   );
 };
 
-export default withAlert()(withRouter(HomePage));
+export default withTranslation()(withAlert()(withRouter(HomePage)));
