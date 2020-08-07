@@ -14,8 +14,7 @@ class Root extends Component {
 
   setResults = (results) => {
     this.setState({
-      results: results[0],
-      orgContent: results[1],
+      results: results
     });
   };
 
@@ -30,7 +29,7 @@ class Root extends Component {
               render={() => <HomePage setResults={this.setResults} />}
             />
             <Route
-              path="/results"
+              path="/resultssss"
               render={() => (
                 <ResultsPage
                   results={this.state.results}
@@ -38,7 +37,7 @@ class Root extends Component {
                 />
               )}
             />
-            <Route path="/test/results_new" render={() => <ResultsNewTest />} />
+            <Route path="/results" render={() => <ResultsNewTest results={this.state.results} />} />
           </Switch>
         </div>
       </Router>
