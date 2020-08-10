@@ -6,21 +6,27 @@ export default function ResultComponent(danger, sentences, key) {
 
   try {
     var textToAudit = danger.sentence;
+    console.log(textToAudit.split(" "));
 
     for (var i = 0; i < danger.danger.length; i++) {
-      const split = textToAudit.split(danger[i]);
-      if (i === danger.length - 1) {
+      const split = textToAudit.split(danger.danger[i]);
+      if (i === danger.danger.length - 1) {
         content.push(
           split[0],
-          <span className="res-bg text-light">{danger[i]}</span>,
+          <span className="res-bg text-light px-1">{danger.danger[i]}</span>,
           split[1]
         );
       } else {
-        content.push(split[0], danger[i]);
+        content.push(
+          split[0],
+          <span className="res-bg text-light px-1">{danger.danger[i]}</span>
+        );
         textToAudit = split[1];
       }
     }
-  } catch (err) {}
+  } catch (err) {
+    console.log(err);
+  }
 
   return (
     <div key={key}>
@@ -56,7 +62,7 @@ export default function ResultComponent(danger, sentences, key) {
             </h1>
           </div>
           <div className="col-9 col-md-10 bg-light py-3 my-2 rounded-corners-right text-left shadow">
-            <p className="my-auto">{danger.sentence}</p>
+            <p className="my-auto">{content}</p>
           </div>
         </div>
       ) : (
