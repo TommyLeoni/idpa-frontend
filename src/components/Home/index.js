@@ -67,7 +67,7 @@ const HomePage = (props) => {
       setShowModal(true);
       axios
         .post(
-          "http://127.0.0.1:5000/api/textRawUpload", //"https://idpa-t04-backend.herokuapp.com/api/textRawUpload",
+          "https://idpa-t04-backend.herokuapp.com/api/textRawUpload",
           { content: text },
           { headers: { "Access-Control-Allow-Origin": "*" } }
         )
@@ -82,7 +82,7 @@ const HomePage = (props) => {
       formData.append("file", textFile);
       axios
         .post(
-          "http://127.0.0.1:5000/api/textFileUpload", //"https://idpa-t04-backend.herokuapp.com/api/textFileUpload",
+          "https://idpa-t04-backend.herokuapp.com/api/textFileUpload",
           formData
         )
         .then(async (res) => {
